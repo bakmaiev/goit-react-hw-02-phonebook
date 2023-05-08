@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { StyledForm } from './PhonebookForm.styled';
 import { nanoid } from 'nanoid';
 
@@ -18,9 +19,7 @@ export class PhonebookForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const bookData = this.state;
-
-    this.props.onSubmit(bookData);
+    this.props.onSubmit(this.state);
 
     this.reset();
   };
@@ -32,10 +31,11 @@ export class PhonebookForm extends Component {
       id: '',
     });
   };
+
   render() {
     return (
       <StyledForm onSubmit={this.handleSubmit}>
-        <h2>{this.props.title}</h2>
+        <h1>{this.props.title}</h1>
         <label>
           <span>Name: </span>
           <input
@@ -60,10 +60,13 @@ export class PhonebookForm extends Component {
             required
           />
         </label>
-        <button onSubmit={this.handleSubmit} type="submit">
-          Add contacts
-        </button>
+        <button type="submit">Add contacts</button>
       </StyledForm>
     );
   }
 }
+
+PhonebookForm.propTypes = {
+  title: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
