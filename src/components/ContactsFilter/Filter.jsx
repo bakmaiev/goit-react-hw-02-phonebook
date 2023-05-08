@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FilterInput, FilterLabel } from './Filter.styled';
 
 export const Filter = ({ filter, onChange }) => {
   return (
-    <label>
+    <FilterLabel>
       <span>Search contacts: </span>
-      <input type="text" name="filter" value={filter} onChange={onChange} />
-    </label>
+      <FilterInput
+        type="text"
+        name="filter"
+        value={filter}
+        onChange={onChange}
+      />
+    </FilterLabel>
   );
 };
 

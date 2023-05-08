@@ -1,24 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ContactsItem, StyledWrapper } from './ContactsList.styled';
+import { Btn } from 'components/PhonebookForm/PhonebookForm.styled';
 
 export const ContactsList = ({ contacts = [], onDelete }) => {
   return (
-    <div>
+    <StyledWrapper>
       <ul>
         {Array.isArray(contacts) &&
           contacts.map(contact => {
             return (
-              <li key={contact.id}>
-                <span>{contact.name}:</span>
-                <span>{contact.number}</span>
-                <button type="button" onClick={() => onDelete(contact.id)}>
+              <ContactsItem key={contact.id}>
+                <span>
+                  {contact.name}: {contact.number}
+                </span>
+                <Btn type="button" onClick={() => onDelete(contact.id)}>
                   Delete
-                </button>
-              </li>
+                </Btn>
+              </ContactsItem>
             );
           })}
       </ul>
-    </div>
+    </StyledWrapper>
   );
 };
 
