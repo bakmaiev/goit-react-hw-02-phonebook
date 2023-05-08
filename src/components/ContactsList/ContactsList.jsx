@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const ContactsList = ({ title, contacts = [], onDelete }) => {
+export const ContactsList = ({ contacts = [], onDelete }) => {
   return (
     <div>
-      <h2>{title}</h2>
       <ul>
         {Array.isArray(contacts) &&
-          contacts.length &&
           contacts.map(contact => {
             return (
               <li key={contact.id}>
@@ -25,7 +23,6 @@ export const ContactsList = ({ title, contacts = [], onDelete }) => {
 };
 
 ContactsList.propTypes = {
-  title: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
   contacts: PropTypes.arrayOf(
     PropTypes.shape({

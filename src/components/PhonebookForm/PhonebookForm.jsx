@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyledForm } from './PhonebookForm.styled';
+import {
+  Btn,
+  FormInput,
+  FormLabel,
+  StyledForm,
+  StyledFormTitle,
+} from './PhonebookForm.styled';
 import { nanoid } from 'nanoid';
 
 export class PhonebookForm extends Component {
@@ -35,10 +41,10 @@ export class PhonebookForm extends Component {
   render() {
     return (
       <StyledForm onSubmit={this.handleSubmit}>
-        <h1>{this.props.title}</h1>
-        <label>
+        <StyledFormTitle>{this.props.title}</StyledFormTitle>
+        <FormLabel>
           <span>Name: </span>
-          <input
+          <FormInput
             onChange={this.handleChange}
             type="text"
             name="name"
@@ -47,10 +53,10 @@ export class PhonebookForm extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
-        <label>
+        </FormLabel>
+        <FormLabel>
           <span>Number: </span>
-          <input
+          <FormInput
             onChange={this.handleChange}
             type="tel"
             name="number"
@@ -59,8 +65,8 @@ export class PhonebookForm extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </label>
-        <button type="submit">Add contacts</button>
+        </FormLabel>
+        <Btn type="submit">Add contacts</Btn>
       </StyledForm>
     );
   }
